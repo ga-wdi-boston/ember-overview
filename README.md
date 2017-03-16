@@ -117,17 +117,23 @@ An abbreviated version:
 ├── README.md
 ├── app/
 │   ├── app.js
-│   ├── application/
-│   │   ├── adapter.js
-│   │   ├── serializer.js
-│   │   └── template.hbs
+│   ├── adapters/
+│       └── application.js
 │   ├── components/
 │   ├── helpers/
+│   ├── models/
+│   ├── routes/
+│   ├── serializers/
+│       └── application.js
+│   ├── services/
+│   ├── styles/
+│       └── app.scss
+│   ├── templates/
+│       ├── components/
+│       └── application.hbs
 │   ├── index.html
 │   ├── resolver.js
 │   ├── router.js
-│   └── styles/
-│       └── app.scss
 ├── bower.json
 ├── config/
 │   └── environment.js
@@ -193,7 +199,7 @@ In particular, what the Router does is associate a URL path with a particular
 Template, through an intermediary object called a **Route** object.
 
 #### Ember Route
-`app/lists/route.js`
+`app/routes/lists.js`
 ```js
 export default Ember.Route.extend({
   model () {
@@ -208,7 +214,7 @@ ID or a query string, (2) linking the Router to a particular Component/Template
 `model`.
 
 #### Ember Model
-`app/list/model.js`
+`app/models/list.js`
 ```js
 export default DS.Model.extend({
   title: DS.attr('string'),
@@ -223,7 +229,7 @@ store are defined by **Models**, which essentially served as resource-specific
 schemas.
 
 #### Ember Template
-`app/lists/template.hbs`
+`app/templates/lists.hbs`
 ```js
 {{#each model as |list|}}
   {{listr-list/card list=list}}
